@@ -1,24 +1,21 @@
 #include "main.h"
-
 /**
- * main - entry point
+ * main - Entry point
  *
- * Description: Prints Holberton with _putchar
- *
- * Return: always 0
+ * Return: Always 0 (Success)
  */
-
 int main(void)
 {
-	int i = 0;
-	char c;
-	char s[] = "_putchar\n";
+	char h[] = "_putchar";
+	int m;
 
-	while (i <= 9)
+	m = 0;
+
+	while (m <= 7)
 	{
-		c = s[i];
-		_putchar(c);
-		i++;
+		_putchar(h[m]);
+		m++;
 	}
+	_putchar('\n');
 	return (0);
 }
