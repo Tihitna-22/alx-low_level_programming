@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
  * main - entry point
@@ -12,7 +12,7 @@ int main(void)
 {
 	int i = 0;
 	char c;
-	char s[] = "-putchar\n";
+	char s[] = "_putchar\n";
 
 	while (i <= 9)
 	{
