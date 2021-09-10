@@ -1,25 +1,24 @@
 #include "main.h"
 
 /**
- * main - check the code
+ *_strcat - concatenates two strings
+ *@dest: pointer for the first string we want to change
+ *@src: pointer  for the second string
  *
- * Return: Always 0.
+ *Return: the new string
  */
 char *_strcat(char *dest, char *src)
- {
-int i = 0, j = 0;
+{
+	int longdest;
+	int j;
 
-	while (dest[i] != '\0')
-		i++;
-
-	while (src[j] != '\0')
+	for (longdest = 0; dest[longdest] != '\0'; longdest++)
 	{
-		dest[i] = src[j];
-		i++;
-		j++;
 	}
-
-	dest[i] = '\0';
-
-	return (dest);   
- }
+	for (j = 0; src[j] != '\0'; j++)
+	{
+		dest[longdest] = src[j];
+		longdest++;
+	}
+	return (dest);
+}
