@@ -10,44 +10,36 @@
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int longn1;
-	int longn2;
-	int bigger;
-	int op;
-	int ad;
+	int add = 0, len1, len2, i, j;
 
-	for (longn1 = 0; n1[longn1] != '\0'; longn1++)
-	for (longn2 = 0; n2[longn2] != '\0'; longn2++)
-	if (longn1 >= longn2)
-		bigger = longn1;
-	else
-		bigger = longn2;
-	if (size_r <= (bigger + 1))
+	for (len1 = 0; n1[len1]; len1++)
+	;
+	for (len2 = 0; n2[len2]; len2++)
+	;
+	if (len1 > size_r || len2 > size_r)
 		return (0);
-	while (bigger > 0)
+	len1--;
+	len2--;
+	size_r--;
+	for (i = 0; i < size_r; i++, len1--, len2--)
 	{
-		if (longn1 >= 0 && longn2 >= 0)
-		{
-			op = (*(n1 + longn1) - '0') + (*(n2 + longn2) - '0') + ad;
-		}
-		else
-		{
-			if (longn1 < 0 && longn2 >= 0)
-				op = (*(n2 + longn2) - '0') + ad;
-			else
-			{
-				if (longn1 >= 0 && longn2 < 0)
-					op = (*(n1 + longn1) - '0') + ad;
-			}
-		}
-	*(r + bigger) = (op % 10) + '0';
-	ad = op / 10;
-	longn1--;
-	longn2--;
-	bigger--;
+		if (len1 >= 0)
+			add += n1[len1] - '0';
+		if (len2 >= 0)
+			add += n2[len2] - '0';
+		if (len1 < 0 && len2 < 0 && add == 0)
+			break;
+		r[i] = add % 10 + '0';
+		add /= 10;
 	}
-	if (*(r + 0) == 0)
-		return (r + 1);
-	r[bigger + 1] = '\n';
+	r[i] = '\0';
+	if (len1 >= 0 || len2 >= 0 || add)
+		return (0);
+	for (i--, j = 0; i > j; i--, j++)
+	{
+		add = r[i];
+		r[i] = r[j];
+		r[j] = add;
+	}
 	return (r);
 }
