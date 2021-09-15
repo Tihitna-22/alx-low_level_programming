@@ -6,7 +6,7 @@
  *
  *Return: square root
  */
-int helper(int n, int y)
+int comparar(int n, int y)
 {
 	if (y * y == n)
 	{
@@ -17,7 +17,7 @@ int helper(int n, int y)
 		return (-1);
 
 	}
-	return (helper(n, y + 1));
+	return (comparar(n, y + 1));
 }
 /**
 *_sqrt_recursion - function that returns the power of number
@@ -26,5 +26,5 @@ int helper(int n, int y)
 */
 int _sqrt_recursion(int n)
 {
-	return (helper(n, 1));
+	return (comparar(n, 1));
 }
