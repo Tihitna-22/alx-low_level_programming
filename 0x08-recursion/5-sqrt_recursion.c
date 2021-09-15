@@ -6,7 +6,7 @@
  *
  *Return: square root
  */
-int tt(int n, int y)
+int helper(int n, int y)
 {
 	if (y * y == n)
 	{
@@ -17,7 +17,7 @@ int tt(int n, int y)
 		return (-1);
 
 	}
-	return (tt(n, y + 1));
+	return (helper(n, y + 1));
 }
 /**
 *_sqrt_recursion - function that returns the power of number
@@ -26,5 +26,5 @@ int tt(int n, int y)
 */
 int _sqrt_recursion(int n)
 {
-	return (tt(n, 1));
+	return (helper(n, 1));
 }
