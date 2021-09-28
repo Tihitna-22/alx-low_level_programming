@@ -1,53 +1,62 @@
-#include <stdio.h>
-#include "dog.h"
 #include <stdlib.h>
-
+#include "dog.h"
+int _strlen(char *s);
+char *_strcpy(char *dest, char *src);
 /**
- * new_dog - create new dog
- *@name:char
- *@age:float
- *@owner: char
- * Return: new dog
+ * new_dog - ...
+ * @name: ...
+ * @age: ...
+ * @owner: ...
+ *
+ * Return: ...
  */
 dog_t *new_dog(char *name, float age, char *owner)
+{ dog_t *cutie_dog;
+int name_l = 0, own_l = 0;
+if (name != NULL && owner != NULL)
 {
-
-	char *name2;
-	char *owner2;
-	int n, o, i, j;
-	struct dog *luna;
-
-        luna = malloc(sizeof(struct dog));
-	if (luna == NULL)
-		return (NULL);
-	for (n = 0; *(name + n) != '\0'; n++)
-		;
-	for (o = 0; *(owner + o) != '\0'; o++)
-		;
-	name2 = malloc(n + 1);
-	if (name2 != NULL)
-	{
-		for (i = 0; i <= n; i++)
-			*(name2 + i) = *(name + i);
-	} else
-	{
-		free(luna);
-		return (NULL);
-	}
-	owner2 = malloc(o + 1);
-	if (owner2 != NULL)
-	{
-		for (j = 0; j <= o; j++)
-			*(owner2 + j) = *(owner + j);
-	} else
-	{
-		free(name2);
-		free(luna);
-		return (NULL);
-	}
-	luna->name = name2;
-	luna->age = age;
-	luna->owner = owner2;
-	return (luna);
-
-}
+name_l = _strlen(name) + 1;
+own_l = _strlen(owner) + 1;
+cutie_dog = malloc(sizeof(dog_t));
+if (cutie_dog == NULL)
+return (NULL);
+cutie_dog->name = malloc(sizeof(char) * name_l);
+if (cutie_dog->name == NULL)
+{
+free(cutie_dog);
+return (NULL); }
+cutie_dog->owner = malloc(sizeof(char) * own_l);
+if (cutie_dog->owner == NULL)
+{
+free(cutie_dog->name);
+free(cutie_dog);
+return (NULL); }
+cutie_dog->name = _strcpy(cutie_dog->name, name);
+cutie_dog->owner = _strcpy(cutie_dog->owner, owner);
+cutie_dog->age = age; }
+return (cutie_dog); }
+/**
+ * _strlen - Returns the length of a string
+ * @s: String to count
+ *
+ * Return: String length
+ */
+int _strlen(char *s)
+{ int c = 0;
+for (; *s != '\0'; s++)
+{ c++; }
+return (c); }
+/**
+ * _strcpy - Copy a string
+ * @dest: Destination value
+ * @src: Source value
+ *
+ * Return: the pointer to dest
+ */
+char *_strcpy(char *dest, char *src)
+{ int i;
+for (i = 0; src[i] != '\0'; i++)
+{
+dest[i] = src[i]; }
+dest[i++] = '\0';
+return (dest); }
