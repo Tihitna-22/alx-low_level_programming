@@ -1,10 +1,6 @@
-#ifndef LIST_H
-#define LIST_H
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
-
+#ifndef LISTS_H
+#define LISTS_H
+#include <string.h>
 /**
  * struct listint_s - singly linked list
  * @n: integer
@@ -13,17 +9,11 @@
  * Description: singly linked list node structure
  * for Holberton project
  */
-
 typedef struct listint_s
 {
 	int n;
 	struct listint_s *next;
 } listint_t;
-
-/*Advanced tasks function prototypes stat*/
-listint_t *reverse_listint(listint_t **head);
-
-/* ends */
 
 size_t print_listint(const listint_t *h);
 size_t listint_len(const listint_t *h);
@@ -36,5 +26,4 @@ listint_t *get_nodeint_at_index(listint_t *head, unsigned int index);
 int sum_listint(listint_t *head);
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n);
 int delete_nodeint_at_index(listint_t **head, unsigned int index);
-
-#endif /*ifndef LIST_H*/
+#endif
