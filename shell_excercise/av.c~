@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+/**
+* main - a program that prints all the arguments, without using ac
+*/
+int main(char **av)
+{
+ 
+        while (*av != NULL)
+	{
+		printf("%s\n", *av);
+		av++;
+	}
+    
+	return 0;
+}
