@@ -1,17 +1,18 @@
-global _start
+global main
+	section .text
 
-section .text:
-_start:	
-	mov eax, 0x4		; Set the function to call (1 is write)
-	mov edx, 1		; Set the first argument of write (fd 1)
-	mov ecx, msg		; Set the 2nd argument, the text to write
-	mov edx, msglen         ; Set the 3rd argument, lengh to write
-	int 0x80			; Call write w/ previously defined things
+main:
+	  mov rax, 1        	; write(
+	  mov rdi, 1        	;   STDOUT_FILENO,
+	  mov rsi, msg      	;   "Hello, Holberton!\n",
+	  mov rdx, msglen   	;   sizeof("Hello, Holberton!\n")
+	  syscall           	; );
 
-	mov eax, 0x1		; Set the function (syscall) exit (id 60)
-	mov edx, 0		; Set the exit return to be 0
-        int 0x80		; Execute the syscall exit
+	  mov rax, 60       	; exit(
+	  mov rdi, 0        	;   EXIT_SUCCESS
+	  syscall           	; );
 
-section .data:
-        msg: db	"Hello, Holberton", 0xA	; Assign "Hello, world!\n" to the var msg
-        msglen: equ $-msg		; Assign len(msg) to msg.len
+	section .data
+msg:		 db "Hello, Holberton", 10
+msglen:		 equ $ - msg
+	
