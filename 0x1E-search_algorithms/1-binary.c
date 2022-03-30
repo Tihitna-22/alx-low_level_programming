@@ -32,7 +32,6 @@ void print_array(int *array, size_t size)
  *
  * Return: index where value is located, or -1 on failure
  */
-
 int binary_search(int *array, size_t size, int value)
  {
    size_t i, mid, j;
